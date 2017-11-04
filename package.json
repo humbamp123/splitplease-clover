@@ -1,0 +1,9 @@
+{
+  "name": "splitplease-clover",
+  "version": "1.0.0",
+  "description": "App to split receipts from Clover using Clover API.",
+  "main": "index.js",
+  "repository": "git@github.com:humbamp123/splitplease-clover.git",
+  "author": "Andres Pineda <humb.amp123@gmail.com>",
+  "license": "MIT"
+}
