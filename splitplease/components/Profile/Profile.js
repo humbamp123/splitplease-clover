@@ -12,23 +12,29 @@ export default class Profile extends React.Component {
 	  // console.log("this.props.navigation=" + util.inspect(this.props.navigation, false,null));
 		const {params} = this.props.navigation.state;
 		return(
-			<ScrollView style={styles.container}>
-				<View style={[styles.textTitle1, styles.textTitle2]}>
-					<Text style={styles.textStyle}>U.O.ME</Text>
-					<TouchableOpacity style={styles.button}>
-						<Text style={styles.buttonText}>$58</Text>
-					</TouchableOpacity>
-				</View>
-				<View style={styles.textTitle1}>
-					<Text style={styles.textStyle}>I.O.U</Text>
-					<TouchableOpacity style={styles.button}>
-						<Text style={styles.buttonText}>$124</Text>
-					</TouchableOpacity>
-				</View>
-			</ScrollView>
-		)
-	}
+      <View>
+        <View style={styles.container}>
+    			<View style={[styles.textTitle1, styles.textTitle2]}>
+    				<Text style={styles.textStyle}>U.O.ME</Text>
+    				<TouchableOpacity style={styles.button}>
+    					<Text style={styles.buttonText}>$58</Text>
+    				</TouchableOpacity>
+    			</View>
+    			<View style={styles.textTitle1}>
+    				<Text style={styles.textStyle}>I.O.U</Text>
+    				<TouchableOpacity style={styles.button}>
+    					<Text style={styles.buttonText}>$124</Text>
+    				</TouchableOpacity>
+    			</View>
+        </View>
+        <View style={styles.container2}>
+          <Button onPress={this.qrScanner.bind(this)} title='scan' color='blue'/>
+        </View>
+    </View>
+    );
+  }
 }
+
 
 const styles = StyleSheet.create ({
 	container: {
@@ -36,6 +42,13 @@ const styles = StyleSheet.create ({
 		flexDirection: 'row',
 		marginBottom: 10
 	},
+  container2: {
+    marginTop:200
+  },
+  mainContainer: {
+    flex: 1,
+    flexDirection: 'column'
+  },
 	textTitle1: {
 		flex: 1,
 		height: 200,
