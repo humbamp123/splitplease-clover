@@ -43,6 +43,6 @@ export default class CameraExample extends React.Component {
     getQRinfo(query.m, query.o).then((response) => {
         // console.warn(response)
     });
-    this.props.navigation.goBack();
+    this.props.navigation.navigate('ScanList');
   }
 }

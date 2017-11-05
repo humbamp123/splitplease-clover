@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
+<<<<<<< Updated upstream
 import { StyleSheet, View, Image, AppRegistry, Text, TouchableOpacity, ScrollView} from 'react-native';
+=======
+import { StyleSheet, View, Image, AppRegistry, Text, Button} from 'react-native';
+import { StackNavigator } from 'react-navigation';
+>>>>>>> Stashed changes
 
 export default class Profile extends React.Component {
+
+  qrScanner() {
+    this.props.navigation.navigate('Scan');
+  }
 	render(){
 		return(
 			<ScrollView style={styles.container}>

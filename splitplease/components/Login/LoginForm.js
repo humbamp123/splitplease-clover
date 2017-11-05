@@ -10,7 +10,7 @@ export default class LoginForm extends React.Component {
   }
 
   render() {
-	  console.log("this.props.navigation=" + util.inspect(this.props.nav, false,null));
+	  // console.log("this.props.navigation=" + util.inspect(this.props.nav, false,null));
 	var {navigate} = this.props.nav;
     return (
       <View style={styles.container}>
