@@ -17,7 +17,7 @@ export default class ScanList extends React.Component {
     return(
       <View style={{flex: 1, flexDirection: 'column', height: 40}}>
             <View><Text style={{fontSize: 20}}>{item.name}</Text></View>
-            <View style={{position: 'absolute', right: 0}}><Text style={{fontSize: 20}}>{item.price}</Text></View>
+            <View style={{position: 'absolute', right: 0}}><Text style={{fontSize: 20}}>{item.price.toFixed(2)}</Text></View>
       </View>
     )
   }
