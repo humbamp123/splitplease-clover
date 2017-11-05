@@ -22,16 +22,10 @@ class HomeScreen extends React.Component {
     });
   }
 
-  qrScanner() {
-    this.props.navigation.navigate('Scan');
-  }
-
   render() {
 	var {navigate} = this.props.navigation;
     return (
       <View style={styles.container}>
-        <Button onPress={this.button} title="QR Results"/>
-            <Button onPress={this.qrScanner.bind(this)} title="Scan" color="blue"/>
             <Login nav={this.props.navigation}/>
       </View>
     );

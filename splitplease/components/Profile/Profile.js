@@ -25,6 +25,9 @@ export default class Profile extends React.Component {
 						<Text style={styles.buttonText}>$124</Text>
 					</TouchableOpacity>
 				</View>
+				<View>
+					<Button onPress={this.qrScanner.bind(this)} title="Scan" color="blue"/>
+				</View>
 			</ScrollView>
 		)
 	}
