@@ -2,22 +2,37 @@ import React from 'react';
 import { Alert, Button, StyleSheet, Text, View } from 'react-native';
 
 function getQRinfo() {
-    return fetch('https://apisandbox.dev.clover.com/v3/merchants/JMZAGJJPYZQ3J/orders/HPWZEFYMAQR4J/line_items?expand=taxRates', {
+    return fetch('https://apisandbox.dev.clover.com/v3/merchants/JMZAGJJPYZQ3J/orders/4HB1WSXBR1KCA/line_items?expand=taxRates', {
       headers: {
       'Authorization': 'Bearer eab450a5-c750-e309-836c-f668ecb67d92'
       }})
       .then((response) => response.json())
       .then((responseJson) => {
         return responseJson.elements.map(function(lineitem){
-          var total=(lineitem.price + (lineitem.price * lineitem.taxRates.elements[0].rate/10000000))/100
-          return {name: lineitem["name"], total: total.toFixed(2)}        
-        });
-      })
+          return {name: lineitem["name"], price: lineitem.price/100} 
+          });
+       })
       .catch((error) => {
         console.error(error);
       });
   }
 
+function getTaxAndTip(){
+    return fetch('https://apisandbox.dev.clover.com/v3/merchants/JMZAGJJPYZQ3J/orders/4HB1WSXBR1KCA/payments',{
+      headers: {
+      'Authorization': 'Bearer eab450a5-c750-e309-836c-f668ecb67d92'
+      }})
+      .then((response) => response.json())
+      .then((responseJson) => {
+        return responseJson.elements.map(function(moreitems){ 
+         return {tax: (moreitems["taxAmount"] || 0)/100, tip: (moreitems["tipAmount"] || 0)/100}
+          });
+         })
+      .catch((error) => {
+        console.error(error);
+      });
+
+ }
 export default class App extends React.Component {
   
 button(){
