@@ -1,5 +1,5 @@
 # splitplease-clover
-App to create QR Code for splitplease Clover market App.
+App to create QR Code for splitplease Clover market App. 
 
 ## Installation
 ```
