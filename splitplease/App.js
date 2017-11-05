@@ -6,6 +6,7 @@ import { getQRinfo, writeReceiptData, getReceiptData, database } from './Clover'
 import Login from './components/Login/Login';
 import Profile from './components/Profile/Profile';
 import ScanList from './components/Scanner/ScanList';
+import Contacts from './Contacts';
 const util = require('util');
 
 class HomeScreen extends React.Component {
@@ -43,6 +44,7 @@ const App = StackNavigator({
   Profile: {screen: Profile},
   Scan: {screen: ScanScreen},
   ScanList: {screen: ScanList},
+  Contacts: {screen: Contacts},
 });
 
 export default App;
