@@ -1,11 +1,12 @@
 import React from 'react';
 import { StackNavigator } from 'react-navigation';
-import { Alert, Button, StyleSheet, Text, View } from 'react-native';
+import { Alert, AppRegistry, Button, StyleSheet, Text, View } from 'react-native';
 import ScanScreen from './QR';
 import { getQRinfo } from './Clover';
+import Login from './components/Login/Login';
 
 class HomeScreen extends React.Component {
-  
+
   button(){
     getQRinfo('JMZAGJJPYZQ3J', '4HB1WSXBR1KCA').then((response) => {
      console.warn('%O', response)
@@ -25,6 +26,7 @@ class HomeScreen extends React.Component {
         <Text>Changes you make will automatically reload.</Text>
         <Text>Shake your phone to open the developer menu.</Text>
         <Button onPress={this.qrScanner.bind(this)} title="Scan" color="blue"/>
+        <Login />
       </View>
     );
   }
@@ -40,8 +42,6 @@ export default App;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#1ea96b'
   },
 });
