@@ -29,7 +29,7 @@ AppRegistry.registerComponent('Login', () => Login)
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1ea96b'
+    backgroundColor: '#1ea96b',
   },
   logoContainer: {
     alignItems: 'center',
@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
   title: {
     color: '#FFF',
     marginTop: 10,
+    marginBottom: 10,
     width: 250,
     textAlign: 'center',
     fontSize: 40,

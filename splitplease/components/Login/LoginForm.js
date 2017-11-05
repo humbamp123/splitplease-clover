@@ -7,16 +7,32 @@ export default class LoginForm extends React.Component {
       <View style={styles.container}>
         <TextInput
           placeholder="Username or Email"
+          placeholderTextColor="rgba(0, 0, 0, 0.3)"
+          returnKeyType="next"
+          onSubmitEditing={() => this.passwordInput.focus()}
+          keyboardType="email-address"
+          autoCapitalize="none"
+          autoCorrect={false}
           style={styles.input}
         />
         <TextInput
           placeholder="Password"
+          placeholderTextColor="rgba(0, 0, 0, 0.3)"
+          returnKeyType="go"
+          secureTextEntry
+          ref={(input) => this.passwordInput = input}
           style={styles.input}
         />
 
         <TouchableOpacity style={styles.buttonContainer}>
           <Text style={styles.buttonText}>
             LOGIN
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.bottomContainer}>
+          <Text style={styles.forgotpasswordText}>
+            Forgot your password?                    Sign up!
           </Text>
         </TouchableOpacity>
       </View>
@@ -31,9 +47,7 @@ const styles = StyleSheet.create({
   input: {
     height: 40,
     backgroundColor: 'rgba(255, 255, 255, 0.7)',
-    marginBottom: 20,
-    color: '#000000',
-    paddingHorizontal: 10,
+    marginBottom: 10,
   },
   buttonContainer: {
     backgroundColor: '#1ea96b',
@@ -41,7 +55,6 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: '#000000',
-    marginTop: 10,
     textAlign: 'center',
     fontSize: 40,
     fontWeight:'bold',
@@ -51,7 +64,15 @@ const styles = StyleSheet.create({
       height: 3
     },
     shadowRadius: 5,
-    shadowOpacity: 1.0
-  }
-
+    shadowOpacity: 1.0,
+    fontWeight: '700'
+  },
+  bottomContainer: {
+    padding:10
+  },
+  forgotpasswordText: {
+    textAlign: 'left',
+    fontSize: 15,
+    color: "#000",
+  },
 })
