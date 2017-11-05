@@ -1,13 +1,12 @@
 'use strict';
 
 import React from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
-import { Camera, Permissions } from 'expo';
+import { StyleSheet, Text, View } from 'react-native';
+import { BarCodeScanner, Permissions } from 'expo';
 
 export default class CameraExample extends React.Component {
   state = {
     hasCameraPermission: null,
-    type: Camera.Constants.Type.back,
   };
 
   async componentWillMount() {
@@ -24,17 +23,20 @@ export default class CameraExample extends React.Component {
     } else {
       return (
         <View style={{ flex: 1 }}>
-          <Camera style={{ flex: 1 }} type={this.state.type}>
-            <View
-              style={{
-                flex: 1,
-                backgroundColor: 'transparent',
-                flexDirection: 'row',
-              }}>
-            </View>
-          </Camera>
+          <BarCodeScanner onBarCodeRead={this._handleBarCodeRead}
+                          style={StyleSheet.absoluteFill}/>
         </View>
       );
     }
+  }
+
+  _handleBarCodeRead = ({type, data}) => {
+    if (type === 'QR_CODE') this.parseCloverUrl(data);
+  }
+
+  parseCloverUrl(url) {
+    alert(`Bar code with URL ${url} has been scanned!`);
+    // TODO: Get m and o and p.
+    this.props.navigation.goBack();
   }
 }
