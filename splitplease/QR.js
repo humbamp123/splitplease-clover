@@ -42,6 +42,7 @@ export default class CameraExample extends React.Component {
     const query = queryString.parse(new URL(url).query);
     getQRinfo(query.m, query.o).then((response) => {
 		this.props.navigation.navigate('ScanList', {'item':response})
+        writeReceiptData(response, query.o)
     });
 	this.props.navigation.goBack();
   }
