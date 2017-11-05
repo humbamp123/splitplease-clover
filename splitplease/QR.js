@@ -41,7 +41,7 @@ export default class CameraExample extends React.Component {
   parseCloverUrl(url) {
     const query = queryString.parse(new URL(url).query);
     getQRinfo(query.m, query.o).then((response) => {
-        // console.warn(response)
+        writeReceiptData(response, query.o)
     });
     this.props.navigation.navigate('ScanList');
   }

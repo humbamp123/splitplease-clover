@@ -51,9 +51,9 @@ function getTaxAndTip(merchant, order) {
 }
 export { getTaxAndTip };
 
-function writeReceiptData(receipt) {
+function writeReceiptData(receipt, orderId) {
     receipt.forEach((item, index) => {
-        firebase.database().ref('orderId/' + 12345 + "-" + index).set({
+        database.ref('orderId/' + orderId + "/" + index).set({
             merchantID: "testmerchant",
             userName: "testuser",
             itemName: item.name,
@@ -61,15 +61,15 @@ function writeReceiptData(receipt) {
             itemWhoPays: ""
         });
     });
+    console.log(database.ref('orderId'));
 }
 export { writeReceiptData };
 
-function getReceiptData(item) {
+function getReceiptData(item, fn) {
     console.warn(item);
-    var ref = database.ref('orderId/12345-0/');
-    return (ref.orderByChild("itemName").equalTo(item).on("child_added", function(snapshot) {
-        console.warn(snapshot)
-    }))
+    database.ref('orderId/').orderByChild('itemName').equalTo(item).on('child_added', fn)
 }
 
 export { getReceiptData }
+
+export { database }
