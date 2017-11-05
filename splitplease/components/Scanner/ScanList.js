@@ -7,25 +7,26 @@ import {
 	AppRegistry,
 	Text,
 	Button,
-	ListView,
+        FlatList,
 } from 'react-native';
 const util = require('util');
 
 export default class ScanList extends React.Component {
 
-  itemlist(){
-	  return this.props.navigation.state.params.item.map((data) =>{
-		  return(
-			  <Text>{data.name}</Text>
-		  )
-	  })
+  renderItem = ({item}) => {
+    return(
+      <View style={{flex: 1, flexDirection: 'column', height: 40}}>
+            <View><Text style={{fontSize: 20}}>{item.name}</Text></View>
+            <View style={{position: 'absolute', right: 0}}><Text style={{fontSize: 20}}>{item.price}</Text></View>
+      </View>
+    )
   }
 	render() {
 	  console.log("this.props.navigation=" + util.inspect(this.props.navigation, false,null));
 		return (
-			<View>
-				{this.itemlist()}
-			</View>
+                  <FlatList data={this.props.navigation.state.params.item}
+                            renderItem={this.renderItem}
+                            keyExtractor={(item, index) => index }/>
 		);
 	}
 }
