@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, TextInput, TouchableOpacity, Text} from 'react-native';
+import { StackNavigator } from 'react-navigation';
+const util = require('util');
 
 export default class LoginForm extends React.Component {
+
+  profile() {
+    this.props.nav.nav.navigate('Profile');
+  }
+
   render() {
+	  console.log("this.props.navigation=" + util.inspect(this.props.nav, false,null));
+	var {navigate} = this.props.nav;
     return (
       <View style={styles.container}>
         <TextInput
@@ -23,8 +32,9 @@ export default class LoginForm extends React.Component {
           ref={(input) => this.passwordInput = input}
           style={styles.input}
         />
-
-        <TouchableOpacity style={styles.buttonContainer}>
+        <TouchableOpacity
+			onPress={this.profile.bind(this)}
+			style={styles.buttonContainer}>
           <Text style={styles.buttonText}>
             LOGIN
           </Text>

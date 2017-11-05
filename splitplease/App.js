@@ -4,6 +4,8 @@ import { Alert, AppRegistry, Button, StyleSheet, Text, View} from 'react-native'
 import ScanScreen from './QR';
 import { getQRinfo } from './Clover';
 import Login from './components/Login/Login';
+import Profile from './components/Profile/Profile';
+const util = require('util');
 
 class HomeScreen extends React.Component {
 
@@ -18,12 +20,15 @@ class HomeScreen extends React.Component {
   }
 
   render() {
-
+	var {navigate} = this.props.navigation;
     return (
       <View style={styles.container}>
         <Button onPress={this.button} title="QR Results"/>
         <Button onPress={this.qrScanner.bind(this)} title="Scan" color="blue"/>
-        <Login />
+        <Login nav={this.props.navigation}/>
+        <Button 
+			onPress={() => navigate('Profile')}
+			title="test"/>
       </View>
     );
   }
@@ -31,10 +36,12 @@ class HomeScreen extends React.Component {
 
 const App = StackNavigator({
   Home: {screen: HomeScreen},
+  Profile: {screen: Profile},
   Scan: {screen: ScanScreen},
 });
 
 export default App;
+AppRegistry.registerComponent('App', () => App)
 
 const styles = StyleSheet.create({
   container: {

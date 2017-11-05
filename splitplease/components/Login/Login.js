@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Image, AppRegistry, Text} from 'react-native';
 import LoginForm from './LoginForm';
+const util = require('util');
 
 export default class Login extends React.Component {
   render() {
@@ -17,7 +18,7 @@ export default class Login extends React.Component {
           <Text style={styles.title}> SplitPlease! </Text>
         </View>
         <View style={styles.formContainer}>
-          <LoginForm />
+          <LoginForm nav={this.props}/>
         </View>
       </View>
     );
