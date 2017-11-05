@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Image, AppRegistry, Text, Button} from 'react-native';
-import { StackNavigator } from 'react-navigation';
+import { StyleSheet, View, Image, AppRegistry, Text, Button, ScrollView, TouchableOpacity} from 'react-native';
+const util = require('util');
 
 export default class Profile extends React.Component {
 
   qrScanner() {
     this.props.navigation.navigate('Scan');
   }
+
 	render(){
+	  // console.log("this.props.navigation=" + util.inspect(this.props.navigation, false,null));
+		const {params} = this.props.navigation.state;
 		return(
 			<ScrollView style={styles.container}>
 				<View style={[styles.textTitle1, styles.textTitle2]}>
@@ -31,7 +34,6 @@ const styles = StyleSheet.create ({
 	container: {
 		flex: 1,
 		flexDirection: 'row',
-		justifyContent: 'space-between',
 		marginBottom: 10
 	},
 	textTitle1: {

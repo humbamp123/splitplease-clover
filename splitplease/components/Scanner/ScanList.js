@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import ReactNative from 'react-native';
-
 import {
+	ReactNative,
 	StyleSheet,
 	View,
 	Image,
@@ -10,16 +9,22 @@ import {
 	Button,
 	ListView,
 } from 'react-native';
-
-import * as firebase from 'firebase';
-
-  // Initialize Firebase
+const util = require('util');
 
 export default class ScanList extends React.Component {
+
+  itemlist(){
+	  return this.props.navigation.state.params.item.map((data) =>{
+		  return(
+			  <Text>{data.name}</Text>
+		  )
+	  })
+  }
 	render() {
+	  console.log("this.props.navigation=" + util.inspect(this.props.navigation, false,null));
 		return (
 			<View>
-				Scann Success!
+				{this.itemlist()}
 			</View>
 		);
 	}

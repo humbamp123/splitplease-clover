@@ -5,7 +5,7 @@ import ScanScreen from './QR';
 import { getQRinfo, writeReceiptData, getReceiptData} from './Clover';
 import Login from './components/Login/Login';
 import Profile from './components/Profile/Profile';
-import ScanList from './components/Scanner/ScanList'
+import ScanList from './components/Scanner/ScanList';
 const util = require('util');
 
 class HomeScreen extends React.Component {
