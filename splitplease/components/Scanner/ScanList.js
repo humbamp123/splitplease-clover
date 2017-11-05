@@ -15,9 +15,10 @@ export default class ScanList extends React.Component {
 
   renderItem = ({item}) => {
     return(
-      <View style={{flex: 1, flexDirection: 'column', height: 40}}>
-            <View><Text style={{fontSize: 20}}>{item.name}</Text></View>
-            <View style={{position: 'absolute', right: 0}}><Text style={{fontSize: 20}}>{item.price.toFixed(2)}</Text></View>
+      <View style={{flexDirection: 'row', height: 40}}>
+        <View style={{flex: 1}}><Text style={{fontSize: 20}}>{item.name}</Text></View>
+        <View style={{marginRight: 7}}><Text style={{fontSize: 20, alignSelf: 'flex-end'}}>{item.price.toFixed(2)}</Text></View>
+        <View><Button style={{fontSize: 20}} title="Who?"/></View>
       </View>
     )
   }
