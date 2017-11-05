@@ -26,9 +26,6 @@ class HomeScreen extends React.Component {
         <Button onPress={this.button} title="QR Results"/>
         <Button onPress={this.qrScanner.bind(this)} title="Scan" color="blue"/>
         <Login nav={this.props.navigation}/>
-        <Button 
-			onPress={() => navigate('Profile')}
-			title="test"/>
       </View>
     );
   }
