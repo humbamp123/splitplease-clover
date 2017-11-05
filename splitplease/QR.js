@@ -7,7 +7,6 @@ import URL from 'url-parse';
 import queryString from 'query-string';
 import { getQRinfo, writeReceiptData } from './Clover';
 
-
 export default class CameraExample extends React.Component {
   state = {
     hasCameraPermission: null,
@@ -41,9 +40,9 @@ export default class CameraExample extends React.Component {
   parseCloverUrl(url) {
     const query = queryString.parse(new URL(url).query);
     getQRinfo(query.m, query.o).then((response) => {
-		this.props.navigation.navigate('ScanList', {'item':response})
+        this.props.navigation.navigate('ScanList', {'item':response})
         writeReceiptData(response, query.o)
     });
-	this.props.navigation.goBack();
+    this.props.navigation.goBack();
   }
 }
