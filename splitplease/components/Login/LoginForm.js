@@ -22,6 +22,7 @@ export default class LoginForm extends React.Component {
           keyboardType="email-address"
           autoCapitalize="none"
           autoCorrect={false}
+          blurOnSubmit={false}
           style={styles.input}
         />
         <TextInput
