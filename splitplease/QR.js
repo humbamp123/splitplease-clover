@@ -3,6 +3,9 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { BarCodeScanner, Permissions } from 'expo';
+import URL from 'url-parse';
+import queryString from 'query-string';
+import { getQRinfo } from './Clover';
 
 export default class CameraExample extends React.Component {
   state = {
@@ -35,8 +38,10 @@ export default class CameraExample extends React.Component {
   }
 
   parseCloverUrl(url) {
-    alert(`Bar code with URL ${url} has been scanned!`);
-    // TODO: Get m and o and p.
+    const query = queryString.parse(new URL(url).query);
+    getQRinfo(query.m, query.o).then((response) => {
+     console.warn('%O', response)
+    });
     this.props.navigation.goBack();
   }
 }
