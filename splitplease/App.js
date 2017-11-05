@@ -1,5 +1,7 @@
 import React from 'react';
+import { StackNavigator } from 'react-navigation';
 import { Alert, Button, StyleSheet, Text, View } from 'react-native';
+import ScanScreen from './QR';
 
 function getQRinfo() {
     return fetch('https://apisandbox.dev.clover.com/v3/merchants/JMZAGJJPYZQ3J/orders/4HB1WSXBR1KCA/line_items?expand=taxRates', {
@@ -15,9 +17,9 @@ function getQRinfo() {
       .catch((error) => {
         console.error(error);
       });
-  }
+}
 
-function getTaxAndTip(){
+function getTaxAndTip() {
     return fetch('https://apisandbox.dev.clover.com/v3/merchants/JMZAGJJPYZQ3J/orders/4HB1WSXBR1KCA/payments',{
       headers: {
       'Authorization': 'Bearer eab450a5-c750-e309-836c-f668ecb67d92'
@@ -31,27 +33,40 @@ function getTaxAndTip(){
       .catch((error) => {
         console.error(error);
       });
-
- }
-export default class App extends React.Component {
-  
-button(){
-   getQRinfo().then((response) => {
-   console.warn('%O', response)
-});
 }
 
-render() {
+class HomeScreen extends React.Component {
+  
+  button(){
+    getQRinfo().then((response) => {
+     console.warn('%O', response)
+    });
+  }
+
+  qrScanner() {
+    this.props.navigation.navigate('Scan');
+  }
+
+  render() {
     return (
       <View style={styles.container}>
+        <Text>Hello</Text>
         <Button onPress={this.button} title="QR Results"/>
         <Text>Open up App.js to start working on your app!</Text>
         <Text>Changes you make will automatically reload.</Text>
         <Text>Shake your phone to open the developer menu.</Text>
+        <Button onPress={this.qrScanner.bind(this)} title="Scan" color="blue"/>
       </View>
     );
   }
 }
+
+const App = StackNavigator({
+  Home: {screen: HomeScreen},
+  Scan: {screen: ScanScreen},
+});
+
+export default App;
 
 const styles = StyleSheet.create({
   container: {
