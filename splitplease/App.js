@@ -2,7 +2,7 @@ import React from 'react';
 import { StackNavigator } from 'react-navigation';
 import { Alert, AppRegistry, Button, StyleSheet, Text, View} from 'react-native';
 import ScanScreen from './QR';
-import { getQRinfo } from './Clover';
+import { getQRinfo, writeReceiptData, getReceiptData} from './Clover';
 import Login from './components/Login/Login';
 import Profile from './components/Profile/Profile';
 const util = require('util');
@@ -11,7 +11,11 @@ class HomeScreen extends React.Component {
 
   button(){
     getQRinfo('JMZAGJJPYZQ3J', '4HB1WSXBR1KCA').then((response) => {
-     console.warn('%O', response)
+        // console.warn(response)
+        writeReceiptData(response);
+        console.log("does it get here");
+        console.log(getReceiptData("coffee"));
+        console.log("testing");
     });
   }
 

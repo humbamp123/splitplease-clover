@@ -5,7 +5,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import { BarCodeScanner, Permissions } from 'expo';
 import URL from 'url-parse';
 import queryString from 'query-string';
-import { getQRinfo } from './Clover';
+import { getQRinfo, writeReceiptData } from './Clover';
+
 
 export default class CameraExample extends React.Component {
   state = {
@@ -40,7 +41,7 @@ export default class CameraExample extends React.Component {
   parseCloverUrl(url) {
     const query = queryString.parse(new URL(url).query);
     getQRinfo(query.m, query.o).then((response) => {
-     console.warn('%O', response)
+        // console.warn(response)
     });
     this.props.navigation.goBack();
   }
