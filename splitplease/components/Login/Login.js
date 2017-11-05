@@ -15,7 +15,12 @@ export default class Login extends React.Component {
           style={styles.logo}
           source={pic}
           />
-          <Text style={styles.title}> SplitPlease! </Text>
+        </View>
+        <View style={{height: 50, marginBottom: 80, marginTop: -80}}>
+          <Image
+          style={styles.logo2}
+          source={require('../images/whitetitle.png')}
+          />
         </View>
         <View style={styles.formContainer}>
           <LoginForm nav={this.props}/>
@@ -29,24 +34,18 @@ AppRegistry.registerComponent('Login', () => Login)
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#1ea96b',
   },
   logoContainer: {
     alignItems: 'center',
-    flexGrow: 1,
   },
   logo: {
     width: 150,
     height: 150,
   },
-  title: {
-    color: '#FFF',
-    marginTop: 10,
-    marginBottom: 10,
-    width: 250,
-    textAlign: 'center',
-    fontSize: 40,
-    fontWeight:'bold',
-  }
+  logo2: {
+    resizeMode: 'contain',
+    width: 300,
+    alignSelf: 'center',
+  },
 })
