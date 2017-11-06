@@ -54,6 +54,7 @@ export default class LoginForm extends React.Component {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
+
   },
   input: {
     height: 40,
@@ -79,7 +80,8 @@ const styles = StyleSheet.create({
     fontWeight: '700'
   },
   bottomContainer: {
-    padding:10
+    padding:10,
+    marginTop: 50
   },
   forgotpasswordText: {
     textAlign: 'left',
